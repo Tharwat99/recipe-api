@@ -13,7 +13,7 @@ class CommandTests(TestCase):
 
     @patch('time.sleep', return_value = True)
     def test_wait_for_db(self, ts):
-        """ test waiting for database"""
+        """ test waiting for database """
         with patch('django.db.utils.ConnectionHandler.__getitem__') as gi:
             gi.side_effect = [OperationalError]*5+[True]
             call_command('wait_for_db')
